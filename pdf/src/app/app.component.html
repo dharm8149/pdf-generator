@@ -1,0 +1,161 @@
+
+<div #dialog class="dialog collapse" style="height: 100vh;width: 100%;">
+
+  <div class="popup">
+    <p style="background-color: aqua;padding-left: 20px;padding-bottom: 5px;padding-top: 5px; font-weight: bold;">
+      Add New Item</p>
+    <button (click)="close()"
+      style="position: absolute;top: 0;right: 0;height: 30px;  border-style: none;background-color: aqua;">
+      <fa-icon [icon]="faClose" size="1x"></fa-icon>
+    </button>
+    <div class="con">
+      <form #pForm="ngForm" (ngSubmit)="add_final(pForm)" >
+        <label for="name">Item Name</label>
+        <span> <input name="name" type="text"  #name ngModel required></span><br>
+        <label for="quan">Item Quantity</label>
+        <span> <input name="quan" type="number"  #quan ngModel required></span><br>
+        <label for="reta">Retail Price</label>
+        <span> <input name="reta" type="text"  #reta ngModel required></span><br>
+        <label for="whol">Wholesale Price</label>
+        <span> <input name="whol" type="number"  #whol ngModel required></span><br>
+
+        
+        <label for="purc">Purchase Price</label>
+
+        <span>
+          <input type="number" name="purc" required  ngModel #purc></span><br>
+        
+        
+          
+        
+        <span style="text-align: center;">
+          <input style="width: 40%;" type="submit" value="Add Item">
+          <input style="width: 40%;" type="button" value="Cancel" (click)="close()">
+
+        </span>
+      </form>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<div #dialog2 class="dialog collapse" style="height: 100vh;width: 100%;">
+
+  <div class="popup">
+    <p style="background-color: aqua;padding-left: 20px;padding-bottom: 5px;padding-top: 5px; font-weight: bold;">
+      Update Item</p>
+    <button (click)="close3()"
+      style="position: absolute;top: 0;right: 0;height: 30px;  border-style: none;background-color: aqua;">
+      <fa-icon [icon]="faClose" size="1x"></fa-icon>
+    </button>
+    <div class="con">
+      <form #pForm1="ngForm" (ngSubmit)="update_final(pForm1)" >
+        <label for="name">Item Name</label>
+        <span> <input name="name" type="text"  #name [(ngModel)]="up.name" required ></span><br>
+        <label for="quan">Item Quantity</label>
+        <span> <input name="quan" type="number"  #quan [(ngModel)]="up.quan" required></span><br>
+        <label for="reta">Retail Price</label>
+        <span> <input name="reta" type="text"  #reta [(ngModel)]="up.reta" required ></span><br>
+        <label for="whol">Wholesale Price</label>
+        <span> <input name="whol" type="number"  #whol [(ngModel)]="up.whol" required ></span><br>
+
+        
+        <label for="purc">Purchase Price</label>
+
+        <span>
+          <input type="number" name="purc" required  [(ngModel)]="up.purc" #purc ></span><br>
+        
+        
+          
+        
+        <span style="text-align: center;">
+          <input style="width: 40%;" type="submit" value="Update Item">
+          <input style="width: 40%;" type="button" value="Cancel" (click)="close3()">
+
+        </span>
+      </form>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="head"  style="padding:3px;background-color: rgb(55, 56, 56);color: white;text-align: center;"><img src="assets/image/sai.png" style="height: 30px;border-radius: 15px;"><span style="padding-left: 15px;font-size: 14px;">Sai Krupa Medical</span></div>
+
+<div class="body">
+<div class="top" style="margin: 0;padding: 0;">
+  <app-top (eventToParent)="add()"></app-top>
+</div>
+<div class="bottom">
+<app-bottom (eventToParent1)="add_msg($event)" (eventToParent2)="updateList($event)" (pdfstart)="pdfstart($event)" (pdfend)="pdfend($event)"></app-bottom>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div #dialog1 class="dialog1 collapse" style="height: 100vh;width: 100%;">
+
+  <div class="popup1">
+    <p style="background-color: aqua;padding-left: 20px;padding-bottom: 5px;padding-top: 5px; font-weight: bold;">
+      Alert</p>
+    <button (click)="close1()"
+      style="position: absolute;top: 0;right: 0;height: 30px;  border-style: none;background-color: aqua;">
+      <fa-icon [icon]="faClose" size="1x"></fa-icon>
+    </button><br>
+    <br>
+
+    <p style="color: white;">{{msg}}</p>
+    <fa-icon class="load collapse" [icon]="faSpinner" size="2x" [spin]="true" style="color: white;" #load1></fa-icon>
+
+  </div>
+
+</div>

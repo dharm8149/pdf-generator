@@ -1,0 +1,56 @@
+<div style="height: 100%;overflow-y: scroll;text-align: center;">
+
+<div style="position:relative;margin-left: auto;margin-right: auto;min-height: calc(29.7cm - 115px - 63px); width: 21cm;margin-bottom: 0;margin-top: 8px;background-color: white">
+<header  id="pageHeader" style="text-align: center;color: blue;margin-left: auto;margin-right: auto; width: 21cm;margin-bottom: 0;margin-top: 0;">
+   <img style="height: 50px;width: 50px;border-radius: 25px;margin-top: -6px;" src="assets/image/sai.png"> <span style="font-size: 30px;"> Sai Krupa Medical</span>
+<div style="width: 80%; margin-right: auto;margin-left: auto;margin-top: 5px;">
+    <p style="margin-bottom: 4px;float: left;width: 50%;">Dhanani Nagar,Shigaon Road</p>
+    
+    <p style="margin-bottom: 4px;float: right;width: 50%;">Mob No.:9370042249</p>
+    <p style="margin-bottom: 4px;float: left;width: 50%;">Boisar(East),Palghar - 401501</p>
+    <p style="margin-bottom: 4px;float: right;width: 50%;">Email:dharm8149@gmail.com</p></div>
+
+<p style="clear: both;border-bottom: 2px solid blue;"></p>
+</header>
+<div class="content">
+    
+  <table style="width: calc(100% - 20mm);margin-left: 10mm;margin-right: 10mm;">
+        <thead>
+
+            <tr style="background-color: rgb(126, 207, 218);">
+                <td>ID</td>
+                <td style="padding-left: 5px;">Item Name</td>
+                <td style="padding-left: 5px;">Quantity</td>
+                <td style="padding-left: 5px;">Retail Price</td>
+                <td style="padding-left: 5px;">Wholesale Price</td>
+                <td style="padding-left: 5px;">Purchase Price</td>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let row of table" >
+            <tr  *ngIf="row.add==1" #row1>
+               
+            <td>{{row.pid}}</td>
+            <td style="padding-left: 5px;">{{row.name}}</td>
+            <td style="padding-left: 5px;">{{row.quan}}</td>
+            <td style="padding-left: 5px;">{{row.reta}}</td>
+            <td style="padding-left: 5px;">{{row.whol}}</td>
+            <td style="padding-left: 5px;">{{row.purc}}</td>
+       
+        </tr>
+    </ng-container>
+        </tbody>
+        </table>
+</div>
+
+
+
+
+<div style="position: fixed;bottom: 0;width:21cm;text-align: center;background-color: black;padding: 10px;"><input type="button" value="Create Pdf" (click)="gen_pdf()" style="margin-right: 5px; background-color: brown;"><input type="button" value="Cancel" (click)="canceled()" style="margin-left: 5px; background-color: brown;"></div>
+
+</div>
+<footer  class="page-footer" id="pageFootr" style="bottom: 0;background-color: white;width:21cm;border-top: 3px solid blue;margin-left: auto;margin-right: auto;margin-bottom: 8px;text-align: center;margin-top: 0;padding-top: 10px;padding-bottom: 50px;">
+    <p>Please Contact As soon As Possible</p>
+</footer>
+</div>

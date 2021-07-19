@@ -1,0 +1,37 @@
+li{
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: aquamarine;
+
+}
+
+li:hover{
+    background-color: rgb(130, 136, 133);
+    cursor: pointer;
+}
+div{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  display: inline-block;
+    background-color: rgb(70, 73, 73);
+    word-spacing: -1;
+    vertical-align: bottom;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    
+    
+}

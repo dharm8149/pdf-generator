@@ -1,0 +1,36 @@
+<div class="left">
+    <div class="search">
+        <input style="height: 30px;padding: 0;width: 300px;" placeholder="Search Items Here" type="text" ngModel (input)="onChange(sval.value)" #sval><img
+            src="assets/image/search.png" style="height: 30px;padding:5px;margin-top: -4px;">
+    </div>
+
+    <div class="table" >
+        <table>
+            <thead>
+           
+            <tr style="background-color: rgb(87, 35, 26);"><td>ID</td><td  style="padding-left: 5px;">Item Name Item name item name</td><td  style="padding-left: 5px;">Quantity</td><td  style="padding-left: 5px;">Retail Price</td><td  style="padding-left: 5px;">Wholesale Price</td><td  style="padding-left: 5px;">Purchase Price</td><td style=" text-align: center;">Add/Remove</td><td style=" text-align: center;">Update</td><td style=" text-align: center;">Details</td></tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor="let row of tables"><td #pid>{{row.gpid}}</td><td  style="padding-left: 5px;">{{row.name}}</td><td  style="padding-left: 5px;">{{row.quan}}</td><td  style="padding-left: 5px;">Retail Price</td><td  style="padding-left: 5px;">Wholesale Price</td><td  style="padding-left: 5px;">Purchase Price</td><td style=" text-align: center;"><img src="assets/image/delete.png" style="height: 25px;display: none;"><img src="assets/image/add.png" (click)="addToList(pid.innerText)" style="height: 25px;padding-top: 4px;padding-bottom: 4px;"></td><td style=" text-align: center;"><img src="assets/image/edit.png" style="height: 25px;"></td><td style=" text-align: center;"><img src="assets/image/info.png" style="height: 25px;"></td>
+            </tbody>
+            </table>
+    </div>
+
+</div>
+<div class="right" style="text-align: center;">
+<h3 style="color: white;">Selected Items</h3>
+<table>
+    <thead>
+   
+    <tr style="background-color: rgb(87, 35, 26);"><td>ID</td><td  style="padding-left: 5px;" colspan="3">Item Name Item name item name</td><td style=" text-align: center;" rowspan="2">Add/Remove</td></tr>
+    <tr><td  style="padding-left: 5px;">Quantity</td><td  style="padding-left: 5px;">Retail Price</td><td  style="padding-left: 5px;">Wholesale Price</td><td  style="padding-left: 5px;">Purchase Price</td>
+</thead>
+<tbody>
+    
+    </tbody>
+    </table>
+<div class="foot">
+    <input type="text" style="background-color: white;color: black;" placeholder="Quatation Name"><input type="button" value="Preview"> <input type="button" value="New">
+</div> 
+</div>

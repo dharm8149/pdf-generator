@@ -1,0 +1,88 @@
+.left{
+width: 60%;
+height: calc(100vh - 70px);
+float: left;
+background-color: rgb(56, 58, 57);
+overflow-y: scroll;
+text-align: center;
+}
+.right{
+width: 40%;
+height: calc(100vh - 70px);
+overflow: hidden;
+overflow-y: scroll;
+background-color: rgb(40, 40,40);
+}
+.table{
+    text-align: center;
+    padding: 4px;
+}
+
+td img:hover{
+    background-color: rgba(130, 136, 133, 0.445);
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+thead{
+    font-weight: bold;
+}
+table, th, td {
+    outline: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+   border-collapse:collapse;
+   border-spacing:0;
+  }
+
+tr{
+    margin: 0;
+    padding: 0;
+
+}
+td{
+    padding: 4px;
+   
+}
+
+.search{
+    text-align: center;
+    padding: 8px;
+}
+
+table{
+    margin-top: 20px;
+    color: white;
+    
+    
+}
+
+.foot {
+    position: fixed;
+    bottom:30px;
+    width: 40%;
+   
+   
+   height: 40px;
+    text-align: center;
+}
+.foot1{
+    position: fixed;
+    bottom:50px;
+    width: 40%;
+   
+   
+   height: 40px;
+    text-align: center;
+}
+.foot input,.foot1 input{
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    border: unset;
+    margin: 3px;
+    background-color: brown;
+    color: aquamarine;
+}

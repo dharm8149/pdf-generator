@@ -1,0 +1,95 @@
+
+<div class="left">
+    <div class="search">
+        <input style="height: 30px;padding: 0;width: 300px;" placeholder="Search Items Here" type="text" ngModel
+            (input)="onChange(sval.value)" #sval><img src="assets/image/search.png"
+            style="height: 30px;padding:5px;margin-top: -4px;">
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+
+                <tr style="background-color: rgb(87, 35, 26);">
+                    <td>ID</td>
+                    <td style="padding-left: 5px;">Item Name</td>
+                    <td style="padding-left: 5px;">Quantity</td>
+                    <td style="padding-left: 5px;">Retail Price</td>
+                    <td style="padding-left: 5px;">Wholesale Price</td>
+                    <td style="padding-left: 5px;">Purchase Price</td>
+                    <td style=" text-align: center;">Add/Remove</td>
+                    <td style=" text-align: center;">Update</td>
+                    <td style=" text-align: center;">Details</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let row of tables;let i=index" [attr.row-index]="i" #row_1>
+                    <td #pid>{{row.pid}}</td>
+                    <td style="padding-left: 5px;">{{row.name}}</td>
+                    <td style="padding-left: 5px;">{{row.quan}}</td>
+                    <td style="padding-left: 5px;">{{row.reta}}</td>
+                    <td style="padding-left: 5px;">{{row.whol}}</td>
+                    <td style="padding-left: 5px;">{{row.purc}}</td>
+                    <td style=" text-align: center;"><img src="assets/image/delete.png" style="height: 25px; "
+                            *ngIf="row.add==1" (click)="deleteToList(row_1)"><img src="assets/image/add.png" (click)="addToList(row_1)"
+                            style="height: 25px;padding-top: 4px;padding-bottom: 4px;" *ngIf="row.add==0"></td>
+                    <td style=" text-align: center;"><img src="assets/image/edit.png" style="height: 25px;" (click)=updateList(row_1)></td>
+                    <td style=" text-align: center;"><img src="assets/image/info.png" style="height: 25px;"></td>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="right" style="text-align: center;">
+    <h3 style="color: white;">Selected Items</h3>
+    <div class="table">
+    <table style="font-size: 13px;text-align: center;margin-bottom: 50px;">
+        <thead>
+
+            <tr style="background-color: rgb(87, 35, 26);">
+                <td>ID</td>
+                <td style="padding-left: 5px;">Item Name</td>
+                <td style="padding-left: 5px;">Quantity</td>
+                <td style="padding-left: 5px;">Retail Price</td>
+                <td style="padding-left: 5px;">Wholesale Price</td>
+                <td style="padding-left: 5px;">Purchase Price</td>
+                <td style=" text-align: center;">Remove</td>
+               
+            </tr>
+        </thead>
+        <tbody>
+<ng-container *ngFor="let row of tables;let i=index">
+            <tr *ngIf="row.add==1"  [attr.row-index]="i" #row_2>
+                <td #pid>{{row.pid}}</td>
+                <td style="padding-left: 5px;">{{row.name}}</td>
+                <td style="padding-left: 5px;">{{row.quan}}</td>
+                <td style="padding-left: 5px;">{{row.reta}}</td>
+                <td style="padding-left: 5px;">{{row.whol}}</td>
+                <td style="padding-left: 5px;">{{row.purc}}</td>
+                <td style=" text-align: center;"><img src="assets/image/delete.png" 
+                    (click)="deleteToList(row_2)"
+                        style="height: 25px;padding-top: 4px;padding-bottom: 4px;" *ngIf="row.add==1"></td>
+            </tr>
+        </ng-container>
+                </tbody>
+    </table>
+    </div>
+    <div class="foot" #foot>
+        <span style="height: 100%;padding: 7px;">
+        <span style="width:30%;color: white;">{{q_name}}</span><img src="assets/image/edit.png" style="height: 40px; padding: 8px;cursor: pointer;" (click)="editS()">
+    </span>
+        <input type="button" value="Preview" (click)="previewed()"> <input type="button" value="New" (click)="newQuatation()">
+    </div>
+    <div class="foot1 collapse" #foot1>
+        <p id="er1" style="color: red;display: none;">Name Already Exists</p>
+        <input type="text" [(ngModel)]="tempData" style="background-color: white;color: black;" placeholder="Quatation Name" 
+         ><input type="button" value="Save" (click)="editN()"> <input type="button" value="Cancel" (click)="cancelN()">
+    </div>
+</div>
+
+
+
+<div #preview class="collapse" style="position: absolute;top: 0;text-align: center;width: 100%;height:100vh;background-color: black;">
+<app-preview (eventToParent)="gen_pdf()" (eventToParent1)="cancel()" [table]="tables" [name]="name" style="text-align: center;width: 100%;"></app-preview>
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "pdf-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^13.1.2",
+    "express": "^4.17.1",
+    "html-pdf": "^3.0.1",
+    "html-pdf-node": "^1.0.7",
+    "pdf-creator-node": "^2.2.2",
+    "pdfkit": "^0.12.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
