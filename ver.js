@@ -1,4 +1,7 @@
 function vertical(x,y,height,pdfDoc){
+    const {dialog}=require('electron')
+    const response=dialog.showMessageBox(null,{message:"Come Here main"})
+    console.log(response)
     pdfDoc.moveTo(30,76)
     pdfDoc.lineTo(564,76).lineWidth(1).strokeColor('black').stroke()
     

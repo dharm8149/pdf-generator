@@ -5,16 +5,19 @@ li{
     border-radius: 5px;
     margin-top: 3px;
     margin-bottom: 3px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    color: aquamarine;
+   
+    font-weight: bold;
+   
+   
+
+}
+li a{
+    
     font-size: 12px;
     font-weight: bold;
     color: aquamarine;
-
 }
-
 li:hover{
     background-color: rgb(130, 136, 133);
     cursor: pointer;
@@ -34,4 +37,15 @@ ul{
     margin: 0;
     
     
+}
+
+a{
+    text-decoration: none;
+    color: aquamarine;;
+}
+a.active{
+    color: aliceblue !important;
+}
+li.active{
+    color: aliceblue !important;
 }

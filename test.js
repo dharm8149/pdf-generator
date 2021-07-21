@@ -14,8 +14,8 @@
 //   } };
 
 // pdf.create(html, options).toFile('./businesscard.pdf', function(err, res) {
-//   if (err) return console.log(err);
-//   console.log(res); // { filename: '/app/businesscard.pdf' }
+//   if (err) return //console.log(err);
+//   //console.log(res); // { filename: '/app/businesscard.pdf' }
 // });
 var pdf = require("pdf-creator-node");
 var fs = require("fs");
@@ -52,7 +52,7 @@ var a='file:///'+path.resolve('./pdf/src/assets/image')+"/sai.png"
 pdf
   .create(document, options)
   .then((res) => {
-    console.log(res);
+    //console.log(res);
   })
   .catch((error) => {
     console.error(error);

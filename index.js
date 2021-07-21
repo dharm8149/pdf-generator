@@ -58,8 +58,8 @@ app.on('activate', function () {
 async function select(event){
     var sql=require('./sqliteOperation')
     var sid=await sql.getCurrent();
-    console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
-    var data=await sql.select("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+    console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where ( sid="+sid.sid+" and add_=1 ) union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+    var data=await sql.select("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where (sid="+sid.sid+" and add_=1)  union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
    console.log(data)
     data=JSON.parse(data)
     data.name=sid.name;
@@ -67,10 +67,51 @@ async function select(event){
     data=JSON.stringify(data)
     event.reply("select",data)
 }
-async function insert(event,arg){
 
+
+async function selectd(event){
   var sql=require('./sqliteOperation')
-  var check="select * from data where name='"+arg["name"]+"'";
+  //var sid=await sql.getCurrent();
+  //console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+  var data=await sql.select("SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data'")
+ //console.log(data)
+  //data=JSON.parse(data)
+  //data.name=sid.name;
+ 
+  //data=JSON.stringify(data)
+  event.reply("selectd",data)
+}
+
+async function selectl(event){
+  var sql=require('./sqliteOperation')
+  //var sid=await sql.getCurrent();
+  //console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+  var data=await sql.select("SELECT sid,name,date FROM 'save_list'")
+ //console.log(data)
+  //data=JSON.parse(data)
+  //data.name=sid.name;
+ 
+  //data=JSON.stringify(data)
+  event.reply("selectl",data)
+}
+
+
+async function selecti(event,arg){
+  var sql=require('./sqliteOperation')
+  //var sid=await sql.getCurrent();
+  //console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+  var data=await sql.select("SELECT * FROM history where pid="+arg)
+ console.log(data+"   kdkkdk  d ddkd")
+  //data=JSON.parse(data)
+  //data.name=sid.name;
+ 
+  //data=JSON.stringify(data)
+  event.reply("selecti",data)
+}
+async function insert(event,arg){
+  arg["name"]=arg["name"].replace(/\s\s+/g, ' ');
+  var sql=require('./sqliteOperation')
+  var check="select * from data where name='"+arg["name"]+"' collate nocase";
   var data1=await sql.select(check)
   console.log(data1)
   data1=JSON.parse(data1)
@@ -153,6 +194,43 @@ async function newQuatation(event){
   // event.reply("insert",data)
 }
 
+async function remove(arg,event){
+  var sql=require('./sqliteOperation')
+
+  var query=`insert into datad select * from data where pid = ${arg['pid']}`;
+  console.log(query)
+   var data=await sql.insert(query)
+
+  query=`delete from data where pid = ${arg['pid']}`;
+ console.log(query)
+  data=await sql.insert(query)
+  console.log(data+"working PPPP")
+  event.reply('remove',data)
+}
+
+async function removel(arg,event){
+  var sql=require('./sqliteOperation')
+  var query=`insert into remove_list select * from save_list where sid = ${arg['sid']}`;
+// console.log(query)
+  var data=await sql.insert(query)
+   query=`delete from save_list where sid = ${arg['sid']}`;
+ console.log(query)
+  data=await sql.insert(query)
+  //console.log(data+"working PPPP")
+  event.reply('removel',data)
+}
+
+
+async function open(event,arg){
+  var sql=require('./sqliteOperation')
+  var sid=await sql.getCurrent();
+  var query=`update save_list set status='F' where sid =${sid.sid}`;
+  var data=await sql.insert(query)
+  query=`update save_list set status='T' where sid =${arg.sid};`;
+  data=await sql.insert(query)
+  event.reply('open',data)
+  
+}
 
 ipcMain.on('select',(event,arg)=>{
     select(event)
@@ -160,9 +238,31 @@ ipcMain.on('select',(event,arg)=>{
 
   })
 
+  ipcMain.on('selectd',(event,arg)=>{
+    selectd(event)
+  
+
+  })
+
+  ipcMain.on('selectl',(event,arg)=>{
+    selectl(event)
+  
+
+  })
+
+  ipcMain.on('selecti',(event,arg)=>{
+    selecti(event,arg)
+  
+
+  })
 
   ipcMain.on('insert',(event,arg)=>{
     insert(event,arg)
+  
+
+  })
+  ipcMain.on('open',(event,arg)=>{
+    open(event,arg)
   
 
   })
@@ -187,6 +287,20 @@ ipcMain.on('select',(event,arg)=>{
   ipcMain.on('deleteToList',(event,arg)=>{
     console.log(arg)
     deleteToList(arg)
+  
+
+  })
+
+  ipcMain.on('remove',(event,arg)=>{
+   
+    remove(arg,event);
+  
+
+  })
+
+  ipcMain.on('removel',(event,arg)=>{
+   
+    removel(arg,event);
   
 
   })

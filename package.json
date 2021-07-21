@@ -4,17 +4,28 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "electron": "^13.1.2",
-    "express": "^4.17.1",
-    "html-pdf": "^3.0.1",
-    "html-pdf-node": "^1.0.7",
-    "pdf-creator-node": "^2.2.2",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
     "pdfkit": "^0.12.1",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "yarn": "^1.22.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron-builder": "^22.11.7",
+    "electron": "^13.1.2",
+    "pdfkit": "^0.12.1",
+    "sqlite3": "^5.0.2",
+    "fs": "0.0.1-security"
+  },
+  "build": {
+    "appId": "dharm.work",
+    "win": {
+      "target": "nsis"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder"
   },
   "author": "",
   "license": "ISC"

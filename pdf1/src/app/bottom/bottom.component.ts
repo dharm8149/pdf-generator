@@ -25,11 +25,11 @@ tables:Array<any>=[]
 
 
   onChange(val :string){
-    //console.log(val)
+    ////console.log(val)
 
   }
   addToList(val :string){
-    //console.log(val)
+    ////console.log(val)
 
   }
 

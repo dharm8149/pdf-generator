@@ -40,7 +40,7 @@ add(){
    }
 add_final(form:NgForm){
  var data=form.value
-  //console.log(data)
+  ////console.log(data)
 
 if(data.name===""||data.name===null||data.quan===""||data.quan===null||data.reta===""||data.reta===null||data.whol===""||data.whol===null||data.purc===""||data.purc===null){
   this.msg="Please Fill All Required Field"
@@ -58,11 +58,41 @@ else{
   
 }
 
+Activate(data2:any){
+  //console.log(data2.constructor.name)
+  if(data2.cname=='RemoveComponent'){
+    data2.eventToParent1.subscribe((data1:any)=>{
+      this.add_msg(data1);
+      })
+  }
 
+  if(data2.cname=='BottomComponent'){
+
+
+
+//console.log(data2)
+
+
+this.btm=data2
+
+data2.eventToParent1.subscribe((data1:any)=>{
+this.add_msg(data1);
+})
+data2.eventToParent2.subscribe((data1:any)=>{
+  this.updateList(data1)
+  })
+  data2.pdfstart.subscribe((data1:any)=>{
+    this.pdfstart(data1);
+    })
+    data2.pdfend.subscribe((data1:any)=>{
+      this.pdfend(data1)
+      })
+    }
+}
 update_final(form:NgForm){
 
  this.up= form.value
-  console.log(this.up)
+  //console.log(this.up)
  
  if(this.up.name===""||this.up.name===null||this.up.quan===""||this.up.quan===null||this.up.reta===""||this.up.reta===null||this.up.whol===""||this.up.whol===null||this.up.purc===""||this.up.purc===null){
    this.msg="Please Fill All Required Field"
@@ -86,8 +116,8 @@ update_final(form:NgForm){
     this.up=data.data
    
      this.rowid=data.rowid
-     console.log(data)
-     //console.log("call come"+msg)
+     //console.log(data)
+     ////console.log("call come"+msg)
     this.update();
  }
 
@@ -98,7 +128,7 @@ add_msg(msg:string){
   }
   
     
-    console.log("call come")
+    //console.log("call come")
     this.msg=msg
     //this.close()
     this.dialog1.nativeElement.querySelector('.load').classList.remove("show");
@@ -122,7 +152,7 @@ add_msg(msg:string){
 
 
  pdfstart(msg:string){
-   console.log("call come "+msg)
+   //console.log("call come "+msg)
   this.msg="Creating Pdf"
   this.dialog1.nativeElement.querySelector('.load').classList.add("show");
   this.callCome1()

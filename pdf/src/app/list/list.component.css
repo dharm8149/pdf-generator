@@ -1,0 +1,70 @@
+.remove{
+
+    width: 100%;
+    height: calc(100vh - 67px);
+   
+    background-color: rgb(56, 58, 57);
+   
+}
+.dialog1{
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    text-align: center;
+    background-color: #e3d0c881;
+}
+
+.popup1{
+    position: absolute;
+    width: 300px;
+    
+    margin-top: 20vh;
+   padding-bottom: 20px;
+    margin-left: calc(50% - 150px);
+    margin-right: 5%;
+    background-color: #506485;
+
+}
+
+
+.table{
+    text-align: center;
+    padding: 4px;
+ 
+}
+
+table{
+    margin-top: 20px;
+    color: white;
+    
+    
+}
+
+td img:hover{
+    background-color: rgba(130, 136, 133, 0.445);
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+thead{
+    font-weight: bold;
+}
+table, th, td {
+    outline: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+   border-collapse:collapse;
+   border-spacing:0;
+  }
+
+tr{
+    margin: 0;
+    padding: 0;
+
+}
+td{
+    padding: 4px;
+   
+}

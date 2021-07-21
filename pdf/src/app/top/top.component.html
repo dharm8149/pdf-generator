@@ -1,14 +1,14 @@
 <div>
     
     <ul>
-        <li (click)="add()">Home</li>
+        <li><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="">Home</a></li>
 
-        <li (click)="add()">Add</li>
+        <li (click)="add()"><a>Add</a></li>
 
-        <li (click)="add()">All List</li>
+        <li ><a routerLinkActive="active" routerLink="all">All List</a></li>
 
-        <li (click)="add()">Remove Item</li>
-        <li>REMOVED LIST</li>
+        <li ><a routerLinkActive="active" routerLink="remove">Remove Item</a></li>
+       
 
     </ul>
     

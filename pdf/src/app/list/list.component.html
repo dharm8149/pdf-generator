@@ -1,0 +1,79 @@
+<div class="remove">
+  
+
+
+
+
+
+    <div #box class="dialog1 collapse" style="height: 100vh;width: 100%;">
+  
+      <div class="popup1">
+        <p style="background-color: aqua;padding-left: 20px;padding-bottom: 5px;padding-top: 5px; font-weight: bold;">
+          Alert</p>
+        <button (click)="close1()"
+          style="position: absolute;top: 0;right: 0;height: 30px;  border-style: none;background-color: aqua;">
+          <fa-icon [icon]="faClose" size="1x"></fa-icon>
+        </button><br>
+        <br>
+    
+        <p style="color: white;">Are Your Sure to Delete</p>
+        <input type="button" value="Delete" (click)="delete()" style="margin-right: 10px;"> <input type="button" value="Cancel" (click)="close1()">
+        <fa-icon class="load collapse" [icon]="faSpinner" size="2x" [spin]="true" style="color: white;" #load1></fa-icon>
+    
+      </div>
+    
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        
+      <div class="table">
+      <table>
+          <thead>
+  
+              <tr style="background-color: rgb(87, 35, 26);">
+                  <td>SID</td>
+                  <td style="padding-left: 5px;">Name</td>
+                  <td style="padding-left: 5px;">Date</td>
+                  <td style="padding-left: 5px;">Open</td>
+                  
+                  <td style=" text-align: center;">Remove</td>
+                 
+              </tr>
+          </thead>
+          <tbody>
+  
+              <tr *ngFor="let row of tables;let i=index" [attr.row-index]="i" #row_1>
+                  <td #pid>{{row.sid}}</td>
+                  <td style="padding-left: 5px;">{{row.name}}</td>
+                  <td style="padding-left: 5px;">{{row.date}}</td>
+                  <td style=" text-align: center;"><img src="assets/image/open.png" style="height: 25px; "
+                    (click)="open(row_1)"></td>
+                  <td style=" text-align: center;"><img src="assets/image/delete.png" style="height: 25px; "
+                              (click)="deleteToList(row_1)"></td>
+                
+          </tbody>
+      </table>
+  </div>
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,6 +1,6 @@
 .left{
 width: 60%;
-height: calc(100vh - 70px);
+height: calc(100vh - 67px);
 float: left;
 background-color: rgb(56, 58, 57);
 overflow-y: scroll;
@@ -8,7 +8,7 @@ text-align: center;
 }
 .right{
 width: 40%;
-height: calc(100vh - 70px);
+height: calc(100vh - 67px);
 overflow: hidden;
 overflow-y: scroll;
 background-color: rgb(40, 40,40);
@@ -86,3 +86,37 @@ table{
     background-color: brown;
     color: aquamarine;
 }
+
+
+.dialog1{
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    text-align: center;
+    background-color: #e3d0c881;
+}
+
+.popup1{
+    position: absolute;
+    width: 70%;
+    
+    margin-top: 5vh;
+    height: 90vh;
+   padding-bottom: 20px;
+    margin-left: calc(50% - 35%);
+    margin-right: 5%;
+    background-color: rgb(56, 58, 57);;
+    
+
+}
+
+.data{
+    overflow-y: scroll;
+}
+
+.table1{
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(90vh - 100px);
+}
+

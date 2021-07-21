@@ -116,7 +116,7 @@
   <app-top (eventToParent)="add()"></app-top>
 </div>
 <div class="bottom">
-<app-bottom (eventToParent1)="add_msg($event)" (eventToParent2)="updateList($event)" (pdfstart)="pdfstart($event)" (pdfend)="pdfend($event)"></app-bottom>
+<router-outlet (activate)="Activate($event)"></router-outlet>
 </div>
 
 </div>

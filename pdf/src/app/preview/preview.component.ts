@@ -24,8 +24,8 @@ num:any=[1,2,3]
    }
 
   ngOnInit(): void {
-    console.log(this.table)
-    console.log(this.name)
+    //console.log(this.table)
+    //console.log(this.name)
   }
 
   gen_pdf(){

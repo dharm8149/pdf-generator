@@ -1,0 +1,80 @@
+<div class="remove">
+  
+
+
+
+
+
+  <div #box class="dialog1 collapse" style="height: 100vh;width: 100%;">
+
+    <div class="popup1">
+      <p style="background-color: aqua;padding-left: 20px;padding-bottom: 5px;padding-top: 5px; font-weight: bold;">
+        Alert</p>
+      <button (click)="close1()"
+        style="position: absolute;top: 0;right: 0;height: 30px;  border-style: none;background-color: aqua;">
+        <fa-icon [icon]="faClose" size="1x"></fa-icon>
+      </button><br>
+      <br>
+  
+      <p style="color: white;">Are Your Sure to Delete</p>
+      <input type="button" value="Delete" (click)="delete()" style="margin-right: 10px;"> <input type="button" value="Cancel" (click)="close1()">
+      <fa-icon class="load collapse" [icon]="faSpinner" size="2x" [spin]="true" style="color: white;" #load1></fa-icon>
+  
+    </div>
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    <div class="table">
+    <table>
+        <thead>
+
+            <tr style="background-color: rgb(87, 35, 26);">
+                <td>ID</td>
+                <td style="padding-left: 5px;">Item Name</td>
+                <td style="padding-left: 5px;">Quantity</td>
+                <td style="padding-left: 5px;">Retail Price</td>
+                <td style="padding-left: 5px;">Wholesale Price</td>
+                <td style="padding-left: 5px;">Purchase Price</td>
+                <td style=" text-align: center;">Remove</td>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let row of tables;let i=index" [attr.row-index]="i" #row_1>
+                <td #pid>{{row.pid}}</td>
+                <td style="padding-left: 5px;">{{row.name}}</td>
+                <td style="padding-left: 5px;">{{row.quan}}</td>
+                <td style="padding-left: 5px;">{{row.reta}}</td>
+                <td style="padding-left: 5px;">{{row.whol}}</td>
+                <td style="padding-left: 5px;">{{row.purc}}</td>
+                <td style=" text-align: center;"><img src="assets/image/delete.png" style="height: 25px; "
+                            (click)="deleteToList(row_1)"></td>
+              
+        </tbody>
+    </table>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+

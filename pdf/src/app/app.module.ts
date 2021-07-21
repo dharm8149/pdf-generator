@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ElectronService, NgxElectronModule } from 'ngx-electron';
 import { PreviewComponent } from './preview/preview.component';
+import { RemoveComponent } from './remove/remove.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   
@@ -16,7 +18,9 @@ import { PreviewComponent } from './preview/preview.component';
     AppComponent,
     TopComponent,
     BottomComponent,
-    PreviewComponent
+    PreviewComponent,
+    RemoveComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,7 @@ add(){
    }
 add_final(form:NgForm){
  var data=form.value
-  //console.log(data)
+  ////console.log(data)
 
 if(data.name===""||data.name===null||data.quan===""||data.quan===null||data.reta===""||data.reta===null||data.whol===""||data.whol===null||data.purc===""||data.purc===null){
   this.msg="Fill Fill All Required Field"
