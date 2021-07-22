@@ -6,9 +6,11 @@ var event_
 let mainWindow
 
 function createWindow () {
+  
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
+    show:false,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
@@ -25,8 +27,9 @@ function createWindow () {
   );
 
   mainWindow.maximize()
+  mainWindow.show()
   // Open the DevTools.
-mainWindow.webContents.openDevTools()
+//mainWindow.webContents.openDevTools()
   mainWindow.removeMenu()
 
   mainWindow.on('closed', function () {
@@ -58,9 +61,9 @@ app.on('activate', function () {
 async function select(event){
     var sql=require('./sqliteOperation')
     var sid=await sql.getCurrent();
-    console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where ( sid="+sid.sid+" and add_=1 ) union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
+    //console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where ( sid="+sid.sid+" and add_=1 ) union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
     var data=await sql.select("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where (sid="+sid.sid+" and add_=1)  union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
-   console.log(data)
+   //console.log(data)
     data=JSON.parse(data)
     data.name=sid.name;
    
@@ -101,7 +104,7 @@ async function selecti(event,arg){
   //var sid=await sql.getCurrent();
   //console.log("select pid,name,quan,reta,whol,purc,add_ as 'add' from 'created' where sid="+sid.sid+" union SELECT pid,name,quan,reta,whol,purc,false as 'add' FROM 'data' where pid not in(select  pid from 'created' where sid="+sid.sid+")")
   var data=await sql.select("SELECT * FROM history where pid="+arg)
- console.log(data+"   kdkkdk  d ddkd")
+ //console.log(data+"   kdkkdk  d ddkd")
   //data=JSON.parse(data)
   //data.name=sid.name;
  
@@ -113,7 +116,7 @@ async function insert(event,arg){
   var sql=require('./sqliteOperation')
   var check="select * from data where name='"+arg["name"]+"' collate nocase";
   var data1=await sql.select(check)
-  console.log(data1)
+  //console.log(data1)
   data1=JSON.parse(data1)
   
   if(data1.msg!=''){
@@ -136,12 +139,12 @@ async function insert(event,arg){
 
 async function update(event,arg){
   var query=`update data set name='${arg["name"]}',quan=${arg["quan"]},reta=${arg["reta"]},whol=${arg["whol"]},purc=${arg["purc"]} where pid=${arg['pid']}`;
-  console.log(query)
+  //console.log(query)
   var sql=require('./sqliteOperation')
   var sid=await sql.getCurrent();
   var data=await sql.insert(query,'data')
   data=await sql.insert(`update created set name='${arg["name"]}',quan=${arg["quan"]},reta=${arg["reta"]},whol=${arg["whol"]},purc=${arg["purc"]} where pid=${arg['pid']} and sid=${sid.sid}`)
-  console.log(data)
+  //console.log(data)
   event.reply("update",JSON.stringify({"status":true,data:arg}))
 }
 
@@ -198,13 +201,13 @@ async function remove(arg,event){
   var sql=require('./sqliteOperation')
 
   var query=`insert into datad select * from data where pid = ${arg['pid']}`;
-  console.log(query)
+  //console.log(query)
    var data=await sql.insert(query)
 
   query=`delete from data where pid = ${arg['pid']}`;
- console.log(query)
+ //console.log(query)
   data=await sql.insert(query)
-  console.log(data+"working PPPP")
+  //console.log(data+"working PPPP")
   event.reply('remove',data)
 }
 
@@ -214,7 +217,7 @@ async function removel(arg,event){
 // console.log(query)
   var data=await sql.insert(query)
    query=`delete from save_list where sid = ${arg['sid']}`;
- console.log(query)
+ //console.log(query)
   data=await sql.insert(query)
   //console.log(data+"working PPPP")
   event.reply('removel',data)
@@ -278,14 +281,14 @@ ipcMain.on('select',(event,arg)=>{
   })
 
   ipcMain.on('addToList',(event,arg)=>{
-    console.log(arg)
+    //console.log(arg)
     addToList(arg)
   
 
   })
 
   ipcMain.on('deleteToList',(event,arg)=>{
-    console.log(arg)
+    //console.log(arg)
     deleteToList(arg)
   
 
@@ -318,16 +321,16 @@ async function create_pdf(event,response){
   var sql=require('./sqliteOperation')
   var sid=await sql.getCurrent();
   var data =await sql.select(`select pid,name,quan,reta,whol,purc from 'created' where sid=${sid.sid} and add_=1`)
-  console.log(data)
+  //console.log(data)
   data=JSON.parse(data)
 
 
   var pdf=require('./pdf')
  data= pdf.createPdf(response.filePaths[0]+"/"+sid.name+".pdf",data.msg)
- console.log(data)
+ //console.log(data)
  data=JSON.parse(data)
  if(data.status){
- event.reply("create_pdf",`{"status":false,"msg":"Pdf is Saved Successfully"}`);//
+ event.reply("create_pdf",`{"status":true,"msg":"Pdf is Saved Successfully"}`);//
  }
  else{
   event.reply("create_pdf",`{"status":false,"msg":"Error Occured while creating A Pdf"}`);//
@@ -346,7 +349,7 @@ async function create_pdf(event,response){
       if (!response.canceled) {
        create_pdf(event,response)
       } else {
-        console.log("no file selected");
+        //console.log("no file selected");
        event.reply("create_pdf",`{"status":false,"msg":"Error Occured while creating A Pdf"}`);
       }
   

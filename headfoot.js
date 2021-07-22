@@ -2,24 +2,24 @@
 function draw(pdfDoc){
     pdfDoc.fontSize(20).fillColor('blue')
     //console.log()
-    pdfDoc.image('./pdf/src/assets/image/sai.png',297-pdfDoc.widthOfString("Om Sai Medical")/2 - 15, 5, {width: 30})
-       .text('Om Sai Medical', 297-pdfDoc.widthOfString("Om Sai Medical")/2+15, 12.5);
-    var data="Dhanani Nagar,Shi gaon Road ,"
+    pdfDoc.image('pdf/src/assets/image/sai.png',297-pdfDoc.widthOfString("Sai Krupa Medical")/2 - 15, 5, {width: 30})
+       .text('Sai Krupa Medical', 297-pdfDoc.widthOfString("Sai Krupa Medical")/2+15, 12.5);
+    var data="Shop No.2,Nanudas Manidas Chawl,Sant Rohidas"
     pdfDoc.fontSize(10);
     var center=pdfDoc.widthOfString(data)
     
     
     pdfDoc.text(data,297-center-20,40)
     
-    data="Boisar(East),Palghar-401501"
+    data="  Marg,Kranti Nagar,Kala Killa,Dharavi,Mumbai 17"
     
     
     pdfDoc.text(data,297-center-20,55)
-    data="Mob:9370042249"
+    data="      Mob:9769697239 / 9892193421"
     
     
     pdfDoc.text(data,297+20,40)
-    data="Email:dharm8149@gmail.com"
+    data="Email:saikrupamedical74@gmail.com"
     
     
     pdfDoc.text(data,297+20,55)
@@ -74,7 +74,7 @@ function draw(pdfDoc){
     pdfDoc.lineTo(574,820).lineWidth(2).stroke(10)
     
     pdfDoc.fontSize(15);
-    data="Footer Text will Appear Here"
+    data=""
     center=pdfDoc.widthOfString(data)
     
     

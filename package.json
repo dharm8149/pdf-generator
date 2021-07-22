@@ -1,5 +1,5 @@
 {
-  "name": "pdf-generator",
+  "name": "sai-krupa-pdf-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -20,8 +20,12 @@
   "build": {
     "appId": "dharm.work",
     "win": {
-      "target": "nsis"
-    }
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "extraFiles": [
+      "pdf/src/assets/image/sai.png","icon.ico"
+    ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

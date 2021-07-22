@@ -32,10 +32,12 @@ var hor=require('./hor')
 hor.horizontal(data,pdfDoc)
 
 
-
+try{
 
 pdfDoc.pipe(fs.createWriteStream(path));
-
+}catch(err){
+    console.log(JSON.stringify(err))
+}
 pdfDoc.end();
 return `{"status":true,"msg":"Pdf Created Succesfully"}`
 
